@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Mail, ExternalLink, Heart } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, FileText, Download, ExternalLink, Heart } from 'lucide-react';
 import { PROFILE_INFO } from '../data/portfolioData';
 
 interface FooterProps {
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenResume }) =
           </div>
 
           {/* Social & Contact Actions */}
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 sm:gap-3 text-xs">
             <a
               href={PROFILE_INFO.githubUrl}
               target="_blank"
@@ -50,12 +50,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact, onOpenResume }) =
               <span>LinkedIn</span>
             </a>
 
-            <button
-              onClick={onOpenResume}
-              className="hover:text-white transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#171c25] border border-[#252a34]"
-            >
-              <span>Resume</span>
-            </button>
+            <div className="flex items-center rounded bg-[#171c25] border border-[#252a34]">
+              <button
+                onClick={onOpenResume}
+                className="hover:text-white transition-colors flex items-center gap-1.5 px-3 py-1.5"
+                title="View CV in modal"
+              >
+                <FileText className="w-3.5 h-3.5 text-[#00d2ff]" />
+                <span>Resume</span>
+              </button>
+              <a
+                href={PROFILE_INFO.resumePdfUrl}
+                download="Gayatri_Chopade_Data_Scientist_Resume.pdf"
+                className="hover:text-[#00f5a0] text-[#00f5a0]/80 transition-colors flex items-center gap-1 px-2.5 py-1.5 border-l border-[#252a34]"
+                title="Download official attached PDF resume"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>PDF</span>
+              </a>
+            </div>
 
             <button
               onClick={onOpenContact}

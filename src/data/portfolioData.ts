@@ -34,6 +34,7 @@ export const PROFILE_INFO = {
   githubUrl: 'https://github.com/gayatrichopade',
   linkedinUrl: 'https://www.linkedin.com/in/gayatrichopade',
   avatarUrl: '/assets/aistudio/Gayatri_Chopade_passportPhoto_8d4e6ec2.PNG',
+  resumePdfUrl: '/assets/aistudio/Gayatri_Chopade-_Data_Scientist_5_Yrs_Exp_5922dda7.pdf',
   bio: 'Data Scientist with 5+ years of expertise in analytics, ML, and enterprise workflows. Leading manufacturing analytics, AI/ML production sequencing, and constraint learning at John Deere. Proven track record at HCLTech delivering $42K/product cost savings, 87% ML accuracy with XGBoost/LightGBM, and optimized Power BI/Power Apps architectures.',
   stats: {
     experience: '5+ Years',

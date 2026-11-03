@@ -12,7 +12,8 @@ import {
   Linkedin,
   Github,
   Mail,
-  Quote
+  Quote,
+  Download
 } from 'lucide-react';
 import { PROFILE_INFO } from '../data/portfolioData';
 
@@ -62,11 +63,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00d2ff]/8 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#10b981]/8 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Typographic Hierarchy, Tagline & Action Buttons */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 w-full">
             
             {/* Live Role badge - clean unboxed */}
             <div className="flex items-center gap-2 text-xs font-mono text-[#00f5a0]">
@@ -97,7 +98,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Floating Quote Widget with Slide-in Entrance */}
-            <div className="relative overflow-hidden rounded-lg bg-[#0f172a] border border-[#ffd79f]/40 p-3 sm:p-3.5 shadow-[0_0_20px_rgba(255,215,159,0.12)] animate-in slide-in-from-left-4 duration-700">
+            <div className="relative overflow-hidden rounded-lg bg-[#0f172a] border border-[#ffd79f]/40 p-3 sm:p-3.5 shadow-[0_0_20px_rgba(255,215,159,0.12)] animate-in fade-in duration-500">
               <div className="flex items-center gap-2.5">
                 <Quote className="w-4 h-4 text-[#ffd79f] shrink-0" />
                 <span className="text-xs sm:text-sm font-mono font-medium text-[#ffd79f]">
@@ -111,51 +112,68 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {PROFILE_INFO.bio}
             </p>
 
-            {/* Quick Action Buttons (View Resume, GitHub, LinkedIn, Get in Touch) */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              
-              {/* Primary CTA: View Resume */}
-              <button
-                onClick={onOpenResume}
-                className="cyber-btn-primary px-5 py-2.5 text-xs sm:text-sm rounded font-bold tracking-wide flex items-center gap-2 whitespace-nowrap shadow-[0_0_18px_rgba(0,210,255,0.35)]"
-              >
-                <FileText className="w-4 h-4" />
-                <span>View Resume (CV)</span>
-              </button>
+            {/* Action Buttons (Arranged in clean 1 or 2 lines) */}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2 w-full max-w-full">
+              {/* Primary Line / Group: Resume CV + PDF Download & Contact */}
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                {/* Primary CTA: View Resume & Direct PDF Download */}
+                <div className="flex items-center bg-[#171c25] p-0.5 rounded-lg border border-[#00d2ff]/40 shadow-[0_0_18px_rgba(0,210,255,0.25)]">
+                  <button
+                    onClick={onOpenResume}
+                    className="cyber-btn-primary px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-md font-bold tracking-wide flex items-center gap-2 whitespace-nowrap active:scale-95"
+                    title="View interactive CV & document preview"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Resume (CV)</span>
+                  </button>
 
-              {/* LinkedIn Button */}
-              <a
-                href={PROFILE_INFO.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cyber-btn-secondary px-4 py-2.5 text-xs sm:text-sm rounded font-medium flex items-center gap-2 whitespace-nowrap"
-              >
-                <Linkedin className="w-4 h-4 text-[#00d2ff]" />
-                <span>LinkedIn</span>
-                <ExternalLink className="w-3 h-3 opacity-60" />
-              </a>
+                  <a
+                    href={PROFILE_INFO.resumePdfUrl}
+                    download="Gayatri_Chopade_Data_Scientist_Resume.pdf"
+                    className="px-2 sm:px-2.5 py-2 text-xs text-[#00f5a0] hover:text-white hover:bg-[#00f5a0]/15 rounded-md transition-colors flex items-center gap-1.5 border-l border-[#252a34] font-mono font-medium active:scale-95"
+                    title="Download attached official PDF resume"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span className="text-xs font-mono font-medium">PDF</span>
+                  </a>
+                </div>
 
-              {/* GitHub Button */}
-              <a
-                href={PROFILE_INFO.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cyber-btn-secondary px-4 py-2.5 text-xs sm:text-sm rounded font-medium flex items-center gap-2 whitespace-nowrap"
-              >
-                <Github className="w-4 h-4" />
-                <span>GitHub</span>
-                <ExternalLink className="w-3 h-3 opacity-60" />
-              </a>
+                {/* High-Impact Contact Button */}
+                <button
+                  onClick={onOpenContact}
+                  className="px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-[#0a0f18] bg-gradient-to-r from-[#00d2ff] via-[#00e1d9] to-[#00f5a0] hover:brightness-110 rounded-lg transition-all whitespace-nowrap flex items-center gap-2 shadow-[0_0_16px_rgba(0,210,255,0.35)] hover:shadow-[0_0_22px_rgba(0,210,255,0.55)] shrink-0 active:scale-95"
+                >
+                  <Mail className="w-4 h-4 fill-current/20" />
+                  <span>Contact</span>
+                </button>
+              </div>
 
-              {/* Get in Touch Button */}
-              <button
-                onClick={onOpenContact}
-                className="px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#00f5a0] bg-[#10b981]/15 hover:bg-[#10b981]/25 border border-[#10b981]/40 rounded transition-all whitespace-nowrap flex items-center gap-2"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Get in Touch</span>
-              </button>
+              {/* Secondary Line / Group: External Profiles */}
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                {/* LinkedIn Button */}
+                <a
+                  href={PROFILE_INFO.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cyber-btn-secondary px-3.5 sm:px-4 py-2 text-xs sm:text-sm rounded-lg font-medium flex items-center gap-2 whitespace-nowrap active:scale-95"
+                >
+                  <Linkedin className="w-4 h-4 text-[#00d2ff]" />
+                  <span>LinkedIn</span>
+                  <ExternalLink className="w-3 h-3 opacity-60" />
+                </a>
 
+                {/* GitHub Button */}
+                <a
+                  href={PROFILE_INFO.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cyber-btn-secondary px-3.5 sm:px-4 py-2 text-xs sm:text-sm rounded-lg font-medium flex items-center gap-2 whitespace-nowrap active:scale-95"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>GitHub</span>
+                  <ExternalLink className="w-3 h-3 opacity-60" />
+                </a>
+              </div>
             </div>
 
             {/* Quick Academic & Cert Badges */}
@@ -170,7 +188,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Right Column: Hero Avatar with Floating Breathing Animation, Neon Glow, & 3D Tilt */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center">
+          <div className="lg:col-span-5 flex flex-col items-center justify-center">
             
             <div 
               ref={cardRef}

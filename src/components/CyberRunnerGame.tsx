@@ -771,13 +771,13 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
             <div>
               <div className="text-xs font-mono text-[#00f5a0] uppercase tracking-wider mb-1 flex items-center gap-1.5">
                 <Gamepad2 className="w-3.5 h-3.5" />
-                <span>Interactive Kernel Arcade Simulator</span>
+                <span>Interactive Break Room · Mini Arcade</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-[#f8fafc] tracking-tight">
-                Cyber Kernel Matrix: Neural Runner
+                Neural Runner: The Data Pipeline Game
               </h2>
               <p className="mt-1 text-sm text-[#bbc9cf]">
-                60 FPS hardware-accelerated memory bus challenge. Harvest data packets, dodge memory leaks, and deploy quantum EMP pulses.
+                Every data scientist needs a quick breather. Dodge rogue bugs, collect clean data packets, and see how high you can score!
               </p>
             </div>
 
@@ -832,7 +832,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
             {/* Right Status: Health, Energy & Audio Mute Control */}
             <div className="flex items-center gap-3 bg-[#0f172a]/85 backdrop-blur-md px-3.5 py-1.5 rounded border border-[#252a34]">
               <div>
-                <span className="text-[#859399] text-[10px] block">KERNEL HEALTH</span>
+                <span className="text-[#859399] text-[10px] block">HEALTH</span>
                 <div className="w-20 h-2 bg-[#171c25] rounded overflow-hidden mt-0.5">
                   <div 
                     className={`h-full transition-all duration-150 ${health > 40 ? 'bg-[#10b981]' : 'bg-[#ef4444]'}`} 
@@ -872,7 +872,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
 
           {/* Flat Control-Hint Line at bottom */}
           <div className="absolute bottom-2.5 left-0 right-0 text-center pointer-events-none text-[11px] font-mono text-[#859399]/80 select-none">
-            WASD / Arrows to Move · Space Pulse Shield (40% EMP) · Esc Pause · M Mute
+            Arrow keys / WASD to move · Space for EMP Pulse shield · Esc to pause · M to mute
           </div>
 
           {/* ======================================================== */}
@@ -896,7 +896,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
               </div>
 
               <p className="text-xs sm:text-sm text-[#bbc9cf] max-w-md mb-8 leading-relaxed font-sans">
-                Navigate Gayatri's high-throughput memory bus. Collect cyan data packets, evade memory leaks, and trigger EMP blast waves.
+                Take a quick break and test your reflexes! Collect clean data packets, steer clear of rogue bugs and memory leaks, and hit Space to unleash an EMP wave when things get chaotic.
               </p>
 
               {/* Primary Start CTA */}
@@ -905,7 +905,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
                 className="cyber-btn-primary px-8 py-3 text-sm font-bold tracking-wider rounded-lg flex items-center gap-2 shadow-[0_0_24px_rgba(0,210,255,0.4)] animate-bounce"
               >
                 <Play className="w-4 h-4 fill-current" />
-                <span>ENGAGE SIMULATION [ENTER / SPACE]</span>
+                <span>START GAME [PRESS SPACE]</span>
               </button>
 
               <div className="mt-8 text-xs font-mono text-[#859399]">
@@ -920,10 +920,10 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
           {gameState === 'PAUSED' && (
             <div className="absolute inset-0 bg-[#0a0f18]/85 flex flex-col items-center justify-center p-6 text-center select-none z-20">
               <h3 className="text-2xl font-bold font-mono text-[#00d2ff] mb-2 tracking-wider">
-                SIMULATION PAUSED
+                GAME PAUSED
               </h3>
-              <p className="text-xs font-mono text-[#859399] mb-6">
-                Press Escape or click below to resume kernel execution.
+              <p className="text-xs text-[#859399] mb-6 font-sans">
+                Take a quick breather or hit Escape to jump right back into the action.
               </p>
               <button
                 onClick={() => {
@@ -932,7 +932,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
                 }}
                 className="cyber-btn-primary px-6 py-2.5 text-xs font-bold rounded"
               >
-                Resume Run
+                Resume Playing
               </button>
             </div>
           )}
@@ -947,10 +947,10 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
               </div>
 
               <h3 className="text-2xl font-bold font-mono text-[#ffb4ab] mb-1 tracking-wider">
-                KERNEL SEGMENTATION FAULT
+                PIPELINE OVERFLOW!
               </h3>
-              <p className="text-xs font-mono text-[#859399] mb-4">
-                Memory boundaries breached by unhandled null pointer anomaly.
+              <p className="text-xs text-[#859399] mb-4 font-sans">
+                A stray bug slipped into production. Even the best models need another epoch!
               </p>
 
               <div className="bg-[#171c25] p-4 rounded-lg border border-[#252a34] mb-6 w-full max-w-xs space-y-2 text-xs font-mono">
@@ -969,7 +969,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
                 className="cyber-btn-primary px-8 py-3 text-sm font-bold tracking-wider rounded-lg flex items-center gap-2 shadow-[0_0_20px_rgba(0,210,255,0.4)]"
               >
                 <RotateCcw className="w-4 h-4" />
-                <span>RETRY KERNEL RUN [SPACE]</span>
+                <span>PLAY AGAIN [SPACE]</span>
               </button>
             </div>
           )}

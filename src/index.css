@@ -17,11 +17,13 @@
     --emerald-bright: #00f5a0;
   }
 
-  body {
+  html, body {
     background-color: #0a0f18;
     color: #dee2f0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
   code, pre, .font-mono {

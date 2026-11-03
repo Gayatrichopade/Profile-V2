@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { ParticleNetwork } from './components/ParticleNetwork';
+import { CursorDataStream } from './components/CursorDataStream';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { StatsStrip } from './components/StatsStrip';
@@ -45,6 +46,9 @@ export default function App() {
       
       {/* Background Interactive Data Science Particle Network */}
       <ParticleNetwork />
+
+      {/* Subtle Data Science Cursor Stream Trail Effect */}
+      <CursorDataStream />
 
       {/* Navigation Top Bar */}
       <Navbar
