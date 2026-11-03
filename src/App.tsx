@@ -15,7 +15,7 @@ import { TechnicalSkillset } from './components/TechnicalSkillset';
 import { AboutPersonalDimensions } from './components/AboutPersonalDimensions';
 import { PinnedRepositories } from './components/PinnedRepositories';
 import { BenchmarkLab } from './components/BenchmarkLab';
-import { NeuralVideoStudio } from './components/NeuralVideoStudio';
+import { AnimationMemeGenerator } from './components/AnimationMemeGenerator';
 import { CyberRunnerGame } from './components/CyberRunnerGame';
 import { VisitorTracker } from './components/VisitorTracker';
 import { ContributionGraph } from './components/ContributionGraph';
@@ -91,8 +91,8 @@ export default function App() {
         {/* 8. Interactive Model Benchmark & Telemetry Simulator */}
         <BenchmarkLab />
 
-        {/* 9. Diffusion Video & Motion Synthesis Studio (gemini-omni-1.1-flash & local engine) */}
-        <NeuralVideoStudio />
+        {/* 9. Animation Meme Generator based on text (Data Science & Dev Humor Studio) */}
+        <AnimationMemeGenerator />
 
         {/* 10. Interactive 60 FPS Cyber Kernel Arcade Game */}
         <CyberRunnerGame />

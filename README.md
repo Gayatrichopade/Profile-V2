@@ -132,7 +132,7 @@ This repository hosts Gayatri's modern, interactive portfolio application built 
 1. **Floating 3D Avatar**: Gyro/mouse parallax hover-tilt effect with breathing neon gradient glow and active inference telemetry chip.
 2. **Particle Network**: Low-opacity canvas background simulating neural data streams.
 3. **Animated Counters**: Count-up statistics on page load.
-4. **Diffusion Video & Motion Synthesis Studio**: Text-to-Video and Animate Image into Video using `gemini-omni-1.1-flash` and client-side canvas stream synthesis.
+4. **Animation Meme Generator**: Dynamic text-to-motion meme studio rendering kinetic typography, particle emitters, and funny developer jokes at 60 FPS with instant WebM video export.
 5. **Cyber Kernel Matrix (60 FPS Game)**: Arcade memory bus runner with procedural Web Audio synthesis, camera shake, and EMP pulses.
 6. **Visitor Telemetry & Guestbook**: Real-time GitHub visitor counter with persistent visitor logging and interactive peer endorsement ledger.
 7. **Interactive Resume Modal**: In-app formatted resume with one-click print and PDF export.

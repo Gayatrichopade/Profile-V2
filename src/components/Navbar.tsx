@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'projects', label: 'Case Studies' },
     { id: 'skills', label: 'Skills' },
     { id: 'about', label: 'About & Quirks' },
-    { id: 'neural-video', label: 'Neural Video' },
+    { id: 'meme-generator', label: 'Meme Generator' },
     { id: 'game', label: 'Arcade Game' },
     { id: 'visitors', label: 'Visitors' },
   ];

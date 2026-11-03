@@ -11,7 +11,8 @@ import {
   Shield, 
   Maximize2, 
   X,
-  Sparkles
+  Sparkles,
+  Square
 } from 'lucide-react';
 
 // Procedural Web Audio Sound Generator
@@ -238,6 +239,19 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
     setMultiplier(1);
     setGameState('PLAYING');
     sounds.playStart();
+  }, []);
+
+  const stopGame = useCallback(() => {
+    const g = gameRef.current;
+    g.state = 'TITLE';
+    g.entities = [];
+    g.particles = [];
+    g.keys.left = false;
+    g.keys.right = false;
+    g.keys.up = false;
+    g.keys.down = false;
+    g.keys.space = false;
+    setGameState('TITLE');
   }, []);
 
   // Keyboard controls listener
@@ -782,6 +796,17 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
             </div>
 
             <div className="flex items-center gap-2">
+              {gameState !== 'TITLE' && (
+                <button
+                  onClick={stopGame}
+                  className="px-3 py-1.5 rounded text-xs flex items-center gap-1.5 font-mono bg-[#ef4444]/15 hover:bg-[#ef4444]/25 border border-[#ef4444]/35 text-[#ffb4ab] transition-all active:scale-95 shadow-sm"
+                  title="Stop Game & Return to Title"
+                >
+                  <Square className="w-3 h-3 fill-current" />
+                  <span>Stop Game</span>
+                </button>
+              )}
+
               <button
                 onClick={() => setIsFullscreen(true)}
                 className="cyber-btn-secondary px-3 py-1.5 rounded text-xs flex items-center gap-1.5"
@@ -829,7 +854,7 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
               <span className="text-xs font-bold text-white tabular-nums">{highScore.toLocaleString()}</span>
             </div>
 
-            {/* Right Status: Health, Energy & Audio Mute Control */}
+            {/* Right Status: Health, Energy & Audio Mute Control & Stop Button */}
             <div className="flex items-center gap-3 bg-[#0f172a]/85 backdrop-blur-md px-3.5 py-1.5 rounded border border-[#252a34]">
               <div>
                 <span className="text-[#859399] text-[10px] block">HEALTH</span>
@@ -847,6 +872,18 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
                   <div className="h-full bg-[#00d2ff]" style={{ width: `${pulseEnergy}%` }} />
                 </div>
               </div>
+
+              {/* Stop Game button visible during gameplay or pause */}
+              {gameState !== 'TITLE' && (
+                <button
+                  onClick={stopGame}
+                  className="pointer-events-auto px-2 py-1 rounded bg-[#ef4444]/20 hover:bg-[#ef4444]/30 border border-[#ef4444]/40 hover:border-[#ef4444]/70 text-[#ffb4ab] text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ml-0.5 shadow-sm"
+                  title="Stop Game (Quit to menu)"
+                >
+                  <Square className="w-3 h-3 fill-current" />
+                  <span className="text-[11px] font-semibold">Stop</span>
+                </button>
+              )}
 
               {/* Mute toggle button (pointer events re-enabled) */}
               <button
@@ -925,15 +962,26 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
               <p className="text-xs text-[#859399] mb-6 font-sans">
                 Take a quick breather or hit Escape to jump right back into the action.
               </p>
-              <button
-                onClick={() => {
-                  gameRef.current.state = 'PLAYING';
-                  setGameState('PLAYING');
-                }}
-                className="cyber-btn-primary px-6 py-2.5 text-xs font-bold rounded"
-              >
-                Resume Playing
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    gameRef.current.state = 'PLAYING';
+                    setGameState('PLAYING');
+                  }}
+                  className="cyber-btn-primary px-6 py-2.5 text-xs font-bold rounded flex items-center gap-1.5"
+                >
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <span>Resume Playing</span>
+                </button>
+                <button
+                  onClick={stopGame}
+                  className="px-5 py-2.5 text-xs font-mono font-medium rounded border border-[#ef4444]/40 text-[#ffb4ab] bg-[#ef4444]/15 hover:bg-[#ef4444]/25 transition-all flex items-center gap-1.5 active:scale-95"
+                  title="Quit to Menu"
+                >
+                  <Square className="w-3.5 h-3.5 fill-current" />
+                  <span>Stop Game</span>
+                </button>
+              </div>
             </div>
           )}
 
@@ -964,13 +1012,22 @@ export const CyberRunnerGame: React.FC<CyberRunnerGameProps> = ({ onClose, isSta
                 </div>
               </div>
 
-              <button
-                onClick={startGame}
-                className="cyber-btn-primary px-8 py-3 text-sm font-bold tracking-wider rounded-lg flex items-center gap-2 shadow-[0_0_20px_rgba(0,210,255,0.4)]"
-              >
-                <RotateCcw className="w-4 h-4" />
-                <span>PLAY AGAIN [SPACE]</span>
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  onClick={startGame}
+                  className="cyber-btn-primary px-8 py-3 text-sm font-bold tracking-wider rounded-lg flex items-center gap-2 shadow-[0_0_20px_rgba(0,210,255,0.4)]"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>PLAY AGAIN [SPACE]</span>
+                </button>
+                <button
+                  onClick={stopGame}
+                  className="px-5 py-3 text-sm font-mono font-medium rounded-lg border border-[#252a34] hover:border-[#ef4444]/40 text-[#bbc9cf] hover:text-[#ffb4ab] hover:bg-[#ef4444]/10 transition-all flex items-center gap-2 active:scale-95"
+                >
+                  <Square className="w-3.5 h-3.5 fill-current text-[#ffb4ab]" />
+                  <span>Stop Game</span>
+                </button>
+              </div>
             </div>
           )}
 
